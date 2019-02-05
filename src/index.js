@@ -7,11 +7,12 @@ const allergySpan = document.getElementById('allergy-slider');
 // const noElephants = document.getElementById('no');
 
 
-
+//changes the value that shows dependent on the slider
 allergy.addEventListener('change', function() {
     allergySpan.textContent = allergy.value;
 });
 
+// gets information from form upon hitting submit
 circusForm.addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -28,7 +29,17 @@ circusForm.addEventListener('submit', function(event) {
         allergy: allergy.value,
         tigerName: tigerNames
     };
-    console.log(applicant);
+
+
+    // redirects to a new page upon submit
+    window.location = 'thanks.html';
+
+    /*here we are setting our applicant object to JSON,
+    passing it to the variable 'serialize' then sending it
+    as JSON to local storage */
+    const serialize = JSON.stringify(applicant);
+    
+    window.localStorage.setItem('applicant', serialize);
 });
 
 
